@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use script'
+        //first way
+        // time is O(n^2)// space is O(1)
+           function sumOfTwoNumbers1(array, targetSum){
+               for(var i =0;i<array.length-1;i++){
+               for(var j=i+1 ;j<array.length;j++){
+                   if(array[i]+ array[j] === targetSum){
+                       return [array[i],array[j]];
+                   }
+               }
+               }
+               return [];
+
+           }
+           console.log(sumOfTwoNumbers1([5, 6, 8, -4, 11, 1, -1, 9], 10))
+
+
+           //second way
+            function sumOfTwoNumbers2(array, targetSum){
+                for(const num of array){
+                    const value = targetSum - num;
+                    if((value !== num)&&(array.includes(value))){
+                        return [num, value]
+                    }
+                }
+             return [];
+            }
+            console.log(sumOfTwoNumbers2([5, 6, 8, -4, 11, 1, -1, 9], 10))
+
+        </script>
+</body>
+</html>
