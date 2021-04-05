@@ -54,8 +54,52 @@
              return [];
             }
 
+    //4th way
+    //using hashmap
+    //O(n) space, time
+            function sumOfTwoNumbers4(array, targetSum){
+                const hash = new Map();
+                for(const num of array){
+                  const match = targetSum - num;
+                  if(hash.has(match)){
+                      return [match, num]
+                  }
+                  else{
+                      hash.set(num , true)
+                  }
+                }
+                return [];
+            }
+
+
+            //5th way
+            //using pointers
+            //O(nlog(n)) | O(1) space
+
+            function sumOfTwoNumbers5(array, targetSum){
+                 array.sort((a,b) => a - b);
+                let left =0;
+                let right = array.length-1;
+                while(left < right){
+                    const currentSum = array[left] + array[right];
+                    if(currentSum === targetSum ){
+                        return [array[right], array[left]]
+                    }
+                    else if(currentSum > targetSum){
+                        right--;
+
+                    }
+                    else if(currentSum < targetSum){
+                        left++;
+                    }
+                }
+
+        return [];
+            }
             console.log(sumOfTwoNumbers2([5, 6, 8, -4, 11, 1, -1, 9], 10))
             console.log(sumOfTwoNumbers3([5, 6, 8, -4, 11, 1, -1, 9], 10))
+            console.log(sumOfTwoNumbers4([5, 6, 8, -4, 11, 1, -1, 9], 10))
+            console.log(sumOfTwoNumbers5([5, 6, 8, -4, 11, 1, -1, 9], 10))
 
         </script>
 </body>
