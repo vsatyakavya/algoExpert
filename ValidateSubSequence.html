@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict'
+      //  [1 , 6, 9, 22, 19] [6, 9 , 19] ---true
+     //  [1 , 6, 9, 22, 19] [6, 9 ,10,  19] ---false
+
+        //using while loop
+        //O(n) time || O(1) space
+        function validateSequence(array, sequence){
+            let arr =0;
+            let seq =0;
+            while(arr < array.length && seq < sequence.length){
+                if(array[arr] === sequence[seq]) seq++;
+                arr++;
+            }
+            return seq === sequence.length;
+
+        }
+        console.log(validateSequence([5, 1, 8, 6 , 23, 25, -1, 9, 10],[1, 6, -1, 10]))
+
+
+        //other way using for loop
+        //O(n) time || O(1) space
+        function validateSequence2(array, sequence){
+         let seq = 0;
+         for(const value of array){
+             if(seq === sequence.length) break;
+             if(sequence[seq] === value) seq++;
+             
+         }
+         return seq === sequence.length;
+
+
+        }
+        console.log(validateSequence2([5, 1, 8, 6 , 23, 25, -1, 9, 10,11],[1, 6, 5, -1, 10]))
+
+
+    </script>
+    
+</body>
+</html>
