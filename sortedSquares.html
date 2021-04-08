@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use script'
+        //[-3 , 4, 5, -6 , 2] --- [4, 9, 16, 25, 36]
+
+        // O(nlogn) time || O(n) space
+        function sequence(array){
+            const sortedSquares = [];
+            let squaredValue;
+            for(const value of array){
+              squaredValue = value * value;
+              sortedSquares.push(squaredValue);
+            }
+            sortedSquares.sort((a, b) => a-b);
+            return sortedSquares;
+
+        }
+        console.log(sequence([-50, -13, -2, -1, 0, 0, 1, 1, 2, 3, 19, 20]))
+
+
+
+        // another way 
+        //O(nlogn) time || O(n) space
+        function sequence2(array){
+             const sortedSquares = new Array(array.length).fill(0);
+             
+             for(let i  = 0; i< array.length ;i++){
+                 const value = array[i];
+                 sortedSquares[i] = value * value;
+             }
+                sortedSquares.sort((a,b) => a-b);
+                return sortedSquares;
+
+        }
+        console.log(sequence2([-50, -13, -2, -1, 0, 0, 1, 1, 2, 3, 19, 20]))
+
+
+    
+
+
+    </script>
+</body>
+</html>
